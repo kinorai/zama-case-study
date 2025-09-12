@@ -1,0 +1,17 @@
+.env
+.git
+.github
+.gitignore
+.plan*
+.terraform
+*.md
+*.tfstate*
+coverage
+dist
+docker-compose*
+Dockerfile*
+infra
+node_modules
+npm-debug.log
+observability
+test
