@@ -1,0 +1,84 @@
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}
+digraph {
+	"local/aws/eu-west-3/internal/foundation/vpc" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" ;
+	"local/aws/eu-west-3/internal/platform/eks-cluster" -> "local/aws/eu-west-3/internal/foundation/vpc";
+	"local/aws/eu-west-3/internal/services/kong" ;
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/kong" -> "local/aws/eu-west-3/internal/services/zama-internal-api";
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" ;
+	"local/aws/eu-west-3/internal/services/kube-prometheus-stack" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/priority-classes" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" ;
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/priority-classes";
+	"local/aws/eu-west-3/internal/services/zama-internal-api" -> "local/aws/eu-west-3/internal/services/kube-prometheus-stack";
+}

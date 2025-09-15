@@ -1,0 +1,804 @@
+01:00:07.856 STDOUT [local/aws/eu-west-3/internal/foundation/vpc] terraform: Acquiring state lock. This may take a few moments...
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: Terraform used the selected providers to generate the following execution
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: plan. Resource actions are indicated with the following symbols:
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:   + create
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: Terraform will perform the following actions:
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:   # helm_release.priority_classes will be created
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:   + resource "helm_release" "priority_classes" {
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + atomic                     = false
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + chart                      = "./zama-priority-classes"
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + cleanup_on_fail            = false
+01:00:08.809 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + create_namespace           = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + dependency_update          = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + disable_crd_hooks          = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + disable_openapi_validation = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + disable_webhooks           = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + force_update               = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + id                         = (known after apply)
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + lint                       = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + max_history                = 0
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + metadata                   = (known after apply)
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + name                       = "zama-priority-classes"
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + namespace                  = "kube-system"
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + pass_credentials           = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + recreate_pods              = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + render_subchart_notes      = true
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + replace                    = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + reset_values               = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + reuse_values               = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + set_wo                     = (write-only attribute)
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + skip_crds                  = false
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + status                     = "deployed"
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + timeout                    = 300
+01:00:08.810 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + values                     = [
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:           + <<-EOT
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                 priorityClasses:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   zama-critical:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     value: 1000000
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     description: "Zama critical priority"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     globalDefault: false
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   zama-high:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     value: 100000
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     description: "Zama high priority"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     globalDefault: false
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   zama-medium:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     value: 10000
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     description: "Zama medium priority"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     globalDefault: false
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   zama-low:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     value: 1000
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     description: "Zama low priority"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     globalDefault: false
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                 
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                 labels:
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   app.kubernetes.io/part-of: "zama"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   app.kubernetes.io/component: "scheduling"
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:             EOT,
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:           + <<-EOT
+01:00:08.811 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                 "labels":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "app.kubernetes.io/component": "scheduling"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "app.kubernetes.io/part-of": "zama"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "zama.env": "local"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                 "priorityClasses":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "zama-critical":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "description": "Zama critical priority"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "globalDefault": false
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "value": 1000000
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "zama-high":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "description": "Zama high priority"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "globalDefault": false
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "value": 100000
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "zama-low":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "description": "Zama low priority"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "globalDefault": false
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "value": 1000
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                   "zama-medium":
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "description": "Zama medium priority"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "globalDefault": false
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:                     "value": 10000
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:             EOT,
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:         ]
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + verify                     = false
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + version                    = "0.1.0"
+01:00:08.812 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + wait                       = true
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:       + wait_for_jobs              = false
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:     }
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: Plan: 1 to add, 0 to change, 0 to destroy.
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: Changes to Outputs:
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:   + namespace    = "kube-system"
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform:   + release_name = "zama-priority-classes"
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: ─────────────────────────────────────────────────────────────────────────────
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: Note: You didn't use the -out option to save this plan, so Terraform can't
+01:00:08.813 STDOUT [local/aws/eu-west-3/internal/services/priority-classes] terraform: guarantee to take exactly these actions if you run "terraform apply" now.
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: Terraform used the selected providers to generate the following execution
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: plan. Resource actions are indicated with the following symbols:
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + create
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: Terraform will perform the following actions:
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   # helm_release.kube_prometheus_stack will be created
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + resource "helm_release" "kube_prometheus_stack" {
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + atomic                     = false
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + chart                      = "./kube-prometheus-stack"
+01:00:11.001 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + cleanup_on_fail            = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + create_namespace           = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + dependency_update          = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + disable_crd_hooks          = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + disable_openapi_validation = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + disable_webhooks           = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + force_update               = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + id                         = (known after apply)
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + lint                       = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + max_history                = 0
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + metadata                   = (known after apply)
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + name                       = "prometheus-stack"
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + namespace                  = "monitoring"
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + pass_credentials           = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + recreate_pods              = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + render_subchart_notes      = true
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + replace                    = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + reset_values               = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + reuse_values               = false
+01:00:11.002 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + set_wo                     = (write-only attribute)
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + skip_crds                  = false
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + status                     = "deployed"
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + timeout                    = 300
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + values                     = [
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + <<-EOT
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 # Kube Prometheus Stack - hardened overrides
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 alertmanager:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   podDisruptionBudget:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     minAvailable: 1
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     unhealthyPodEvictionPolicy: AlwaysAllow
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   alertmanagerSpec:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     priorityClassName: zama-critical
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     securityContext:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsGroup: 2000
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsNonRoot: true
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsUser: 1000
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       fsGroup: 2000
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       seccompProfile:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         type: RuntimeDefault
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     resources:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       requests:
+01:00:11.003 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         cpu: 50m
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         memory: 128Mi
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       limits:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         cpu: 200m
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         memory: 512Mi
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 prometheus:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   podDisruptionBudget:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     minAvailable: 1
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     unhealthyPodEvictionPolicy: AlwaysAllow
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   prometheusSpec:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     priorityClassName: zama-critical
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     securityContext:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsGroup: 2000
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsNonRoot: true
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       runAsUser: 1000
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       fsGroup: 2000
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       seccompProfile:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         type: RuntimeDefault
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     resources:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       requests:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         cpu: 200m
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         memory: 1Gi
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       limits:
+01:00:11.004 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         cpu: "1"
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         memory: 2Gi
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 prometheusOperator:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   priorityClassName: zama-critical
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   podDisruptionBudget:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     minAvailable: 1
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     unhealthyPodEvictionPolicy: AlwaysAllow
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   securityContext:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     fsGroup: 65534
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsGroup: 65534
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsNonRoot: true
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsUser: 65534
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     seccompProfile:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       type: RuntimeDefault
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   containerSecurityContext:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     allowPrivilegeEscalation: false
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     readOnlyRootFilesystem: true
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     capabilities:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       drop:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         - ALL
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   resources:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     requests:
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 100m
+01:00:11.005 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 200Mi
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     limits:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 500m
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 512Mi
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 grafana:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   priorityClassName: zama-critical
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   securityContext:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsNonRoot: true
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsUser: 1001
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     fsGroup: 1001
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     seccompProfile:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       type: RuntimeDefault
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   containerSecurityContext:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     allowPrivilegeEscalation: false
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     readOnlyRootFilesystem: true
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     capabilities:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       drop:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         - ALL
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   resources:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     requests:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 100m
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 256Mi
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     limits:
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 500m
+01:00:11.006 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 512Mi
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   autoscaling:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     minReplicas: 1
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     maxReplicas: 3
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     targetCPUUtilizationPercentage: 60
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     targetMemoryUtilizationPercentage: 70
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 kube-state-metrics:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   priorityClassName: zama-critical
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   podSecurityContext:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsNonRoot: true
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsUser: 1001
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     runAsGroup: 1001
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     fsGroup: 1001
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     seccompProfile:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       type: RuntimeDefault
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   containerSecurityContext:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     allowPrivilegeEscalation: false
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     readOnlyRootFilesystem: true
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     capabilities:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       drop:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         - ALL
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   resources:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     requests:
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 100m
+01:00:11.007 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 200Mi
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     limits:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 300m
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 400Mi
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   autoscaling:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     minReplicas: 1
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     maxReplicas: 3
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     targetCPUUtilizationPercentage: 60
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 prometheus-node-exporter:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   priorityClassName: zama-critical
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   containerSecurityContext:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     allowPrivilegeEscalation: false
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     readOnlyRootFilesystem: true
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     capabilities:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       drop:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         - ALL
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   resources:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     requests:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 50m
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 64Mi
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     limits:
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       cpu: 200m
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       memory: 128Mi
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:             EOT,
+01:00:11.008 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + <<-EOT
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 grafana:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   ingress:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     ingressClassName: kong
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     hosts:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       - grafana.internal.localhost
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   sidecar:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     dashboards:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       enabled: true
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       label: grafana_dashboard
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       searchNamespace: ALL
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 prometheus:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   ingress:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     enabled: true
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     ingressClassName: kong
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     hosts:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       - prometheus.internal.localhost
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   prometheusSpec:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     additionalScrapeConfigs: |
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       - job_name: 'zama-internal-api'
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         kubernetes_sd_configs:
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                           - role: endpoints
+01:00:11.009 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         relabel_configs:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                           - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name]
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             action: keep
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             regex: zama-internal-api
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                           - source_labels: [__meta_kubernetes_endpoint_port_name]
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             action: keep
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             regex: http
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         metrics_path: /metrics
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     ruleSelectorNilUsesHelmValues: false
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                 additionalPrometheusRulesMap:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                   api-alerts:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                     groups:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                       - name: api-alerts
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                         rules:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                           - alert: HighErrorRate
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             expr: sum(rate(http_requests_total{status=~"5.."}[5m])) > 1
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             for: 2m
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             labels:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                               severity: warning
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                             annotations:
+01:00:11.010 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                               summary: High 5xx rate detected
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:                               description: More than 1 req/s of 5xx over 5m
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:             EOT,
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + (sensitive value),
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:         ]
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + verify                     = false
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + version                    = "77.6.2"
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + wait                       = true
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + wait_for_jobs              = false
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:     }
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   # kubernetes_namespace.this will be created
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + resource "kubernetes_namespace" "this" {
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + id                               = (known after apply)
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + wait_for_default_service_account = false
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + metadata {
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + generation       = (known after apply)
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + name             = "monitoring"
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + resource_version = (known after apply)
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:           + uid              = (known after apply)
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:         }
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:     }
+01:00:11.011 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   # random_password.grafana_password will be created
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + resource "random_password" "grafana_password" {
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + bcrypt_hash      = (sensitive value)
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + id               = (known after apply)
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + length           = 32
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + lower            = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_lower        = 1
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_numeric      = 1
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_special      = 0
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_upper        = 1
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + number           = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + numeric          = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + override_special = "!@#$%^&*()-_=+[]{}<>:?"
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + result           = (sensitive value)
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + special          = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + upper            = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:     }
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   # random_password.grafana_username will be created
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + resource "random_password" "grafana_username" {
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + bcrypt_hash = (sensitive value)
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + id          = (known after apply)
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + length      = 16
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + lower       = true
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_lower   = 0
+01:00:11.012 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_numeric = 0
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_special = 0
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + min_upper   = 0
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + number      = false
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + numeric     = false
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + result      = (sensitive value)
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + special     = false
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:       + upper       = true
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:     }
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: Plan: 4 to add, 0 to change, 0 to destroy.
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: Changes to Outputs:
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + grafana_admin_password = (sensitive value)
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + grafana_admin_user     = (sensitive value)
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + namespace              = "monitoring"
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform:   + release_name           = "prometheus-stack"
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: ─────────────────────────────────────────────────────────────────────────────
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: Note: You didn't use the -out option to save this plan, so Terraform can't
+01:00:11.013 STDOUT [local/aws/eu-west-3/internal/services/kube-prometheus-stack] terraform: guarantee to take exactly these actions if you run "terraform apply" now.
+01:00:13.197 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: Terraform used the selected providers to generate the following execution
+01:00:13.201 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: plan. Resource actions are indicated with the following symbols:
+01:00:13.202 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + create
+01:00:13.202 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: Terraform will perform the following actions:
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   # helm_release.app will be created
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + resource "helm_release" "app" {
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + atomic                     = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + chart                      = "./chart"
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + cleanup_on_fail            = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + create_namespace           = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + dependency_update          = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + disable_crd_hooks          = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + disable_openapi_validation = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + disable_webhooks           = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + force_update               = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + id                         = (known after apply)
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + lint                       = false
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + max_history                = 0
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + metadata                   = (known after apply)
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + name                       = "zama-internal-api"
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + namespace                  = "zama-internal-api"
+01:00:13.206 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + pass_credentials           = false
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + recreate_pods              = false
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + render_subchart_notes      = true
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + replace                    = false
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + reset_values               = false
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + reuse_values               = false
+01:00:13.207 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + set_wo                     = (write-only attribute)
+01:00:13.210 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + skip_crds                  = false
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + status                     = "deployed"
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + timeout                    = 300
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + values                     = [
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + <<-EOT
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Default values for zama-internal-api.
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is a YAML-formatted file.
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Declare variables to be passed into your templates.
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 replicaCount: 1
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.213 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
+01:00:13.216 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 image:
+01:00:13.216 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   repository: zama-internal/zama-internal-api
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # This sets the pull policy for images.
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   pullPolicy: IfNotPresent
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # Overrides the image tag whose default is the chart appVersion.
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   tag: "0.0.1"
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 imagePullSecrets: []
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is to override the chart name.
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 nameOverride: ""
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 fullnameOverride: "api"
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 serviceAccount:
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # Specifies whether a service account should be created
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   create: true
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # Automatically mount a ServiceAccount's API credentials?
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   automount: false
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # Annotations to add to the service account
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   annotations: {}
+01:00:13.217 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # The name of the service account to use.
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # If not set and create is true, a name is generated using the fullname template
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   name: ""
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is for setting Kubernetes Annotations to a Pod.
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 podAnnotations: {}
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is for setting Kubernetes Labels to a Pod.
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 podLabels: {}
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 podSecurityContext:
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   fsGroup: 10001
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   fsGroupChangePolicy: OnRootMismatch
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   runAsNonRoot: true
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   runAsUser: 10001
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   runAsGroup: 10001
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   seccompProfile:
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     type: RuntimeDefault
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 securityContext:
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   allowPrivilegeEscalation: false
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   capabilities:
+01:00:13.218 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     drop:
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                       - ALL
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   readOnlyRootFilesystem: true
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   runAsNonRoot: true
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 service:
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   type: ClusterIP
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   port: 3000
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 ingress:
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   enabled: true
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   className: "kong"
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   annotations:
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     konghq.com/strip-path: "false"
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     # kubernetes.io/ingress.class: nginx
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     # kubernetes.io/tls-acme: "true"
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   hosts:
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     - host: api.internal.localhost
+01:00:13.219 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                       paths:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                         - path: /
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                           pathType: ImplementationSpecific
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   tls: []
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   #  - secretName: chart-example-tls
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   #    hosts:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   #      - chart-example.local
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 resources:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   limits:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     cpu: 500m
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     memory: 512Mi
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   requests:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     cpu: 100m
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     memory: 128Mi
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 livenessProbe:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   httpGet:
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     path: /healthz
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     port: http
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   initialDelaySeconds: 5
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   periodSeconds: 10
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   timeoutSeconds: 2
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   failureThreshold: 3
+01:00:13.220 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 readinessProbe:
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   httpGet:
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     path: /ready
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     port: http
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   initialDelaySeconds: 2
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   periodSeconds: 10
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   timeoutSeconds: 2
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   failureThreshold: 3
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 autoscaling:
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   enabled: true
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   minReplicas: 2
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   maxReplicas: 5
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   targetCPUUtilizationPercentage: 70
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   targetMemoryUtilizationPercentage: 80
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Additional volumes on the output Deployment definition.
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 volumes: []
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # - name: foo
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 #   secret:
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 #     secretName: mysecret
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 #     optional: false
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Additional volumeMounts on the output Deployment definition.
+01:00:13.221 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 volumeMounts: []
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # - name: foo
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 #   mountPath: "/etc/foo"
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 #   readOnly: true
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 nodeSelector: {}
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 tolerations: []
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 affinity: {}
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Pod Disruption Budget configuration
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 pdb:
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   enabled: true
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   minAvailable: 1
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # PriorityClass configuration
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 priorityClass:
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   create: false
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   name: "zama-medium"
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   value: 100000
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   globalDefault: false
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   description: "Medium priority for internal dev services"
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Set on the Pod to use the PriorityClass
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 priorityClassName: "zama-medium"
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.222 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Environment variables (plain)
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 env:
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   - name: NODE_ENV
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     value: production
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Secret-sourced environment variables
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Each item refers to a key in the Secret defined below
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 secretEnv:
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   - name: API_KEY
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     key: API_KEY
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     # secretName can be omitted to default to <fullname>-secret
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     secretName: ""
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 # Optional Secret to mount environment values from Helm (do not commit real secrets)
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 secret:
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   enabled: true
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   # If empty, defaults to <fullname>-secret
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   name: ""
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   stringData:
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     # Replace at deploy-time via --set or external secret manager
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                     API_KEY: "REPLACE_ME"
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:             EOT,
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + <<-EOT
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                 image:
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   repository: k3d-zama-local-k3d-registry:49810/zama-internal-api
+01:00:13.223 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:                   tag: "local"
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:             EOT,
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + (sensitive value),
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:         ]
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + verify                     = false
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + version                    = "0.1.0"
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + wait                       = true
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + wait_for_jobs              = false
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:     }
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   # kubernetes_namespace.this will be created
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + resource "kubernetes_namespace" "this" {
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + id                               = (known after apply)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + wait_for_default_service_account = false
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + metadata {
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + generation       = (known after apply)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + name             = "zama-internal-api"
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + resource_version = (known after apply)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:           + uid              = (known after apply)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:         }
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:     }
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   # random_password.api_key will be created
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + resource "random_password" "api_key" {
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + bcrypt_hash      = (sensitive value)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + id               = (known after apply)
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + length           = 32
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + lower            = true
+01:00:13.224 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + min_lower        = 1
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + min_numeric      = 1
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + min_special      = 0
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + min_upper        = 1
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + number           = true
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + numeric          = true
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + override_special = "!@#$%^&*()-_=+[]{}<>:?"
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + result           = (sensitive value)
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + special          = true
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:       + upper            = true
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:     }
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: Plan: 3 to add, 0 to change, 0 to destroy.
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: Changes to Outputs:
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + api_key      = (sensitive value)
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + namespace    = "zama-internal-api"
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform:   + release_name = "zama-internal-api"
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: ─────────────────────────────────────────────────────────────────────────────
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: Note: You didn't use the -out option to save this plan, so Terraform can't
+01:00:13.225 STDOUT [local/aws/eu-west-3/internal/services/zama-internal-api] terraform: guarantee to take exactly these actions if you run "terraform apply" now.
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: Terraform used the selected providers to generate the following execution
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: plan. Resource actions are indicated with the following symbols:
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + create
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: Terraform will perform the following actions:
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   # helm_release.kong will be created
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + resource "helm_release" "kong" {
+01:00:16.042 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + atomic                     = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + chart                      = "./kong"
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + cleanup_on_fail            = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + create_namespace           = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + dependency_update          = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + disable_crd_hooks          = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + disable_openapi_validation = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + disable_webhooks           = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + force_update               = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + id                         = (known after apply)
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + lint                       = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + max_history                = 0
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + metadata                   = (known after apply)
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + name                       = "kong"
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + namespace                  = "kong"
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + pass_credentials           = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + recreate_pods              = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + render_subchart_notes      = true
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + replace                    = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + reset_values               = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + reuse_values               = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + set_wo                     = (write-only attribute)
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + skip_crds                  = false
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + status                     = "deployed"
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + timeout                    = 300
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + values                     = [
+01:00:16.043 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + <<-EOT
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 priorityClassName: "zama-critical"
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 ingressController:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   enabled: true
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   resources:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     limits:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       cpu: 1
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       memory: 2Gi
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     requests:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       cpu: 100m
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       memory: 256Mi
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 # Resource requests/limits for Kong
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 resources:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   limits:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     cpu: 1
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     memory: 2Gi
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   requests:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     cpu: 100m
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     memory: 256Mi
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 # Enable PDB for Kong
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 podDisruptionBudget:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   enabled: true
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   minAvailable: 50%
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 # Enable HPA for Kong
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 autoscaling:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   enabled: true
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   minReplicas: 2
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   maxReplicas: 5
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   metrics:
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     - type: Resource
+01:00:16.044 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       resource:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         name: cpu
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         target:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           type: Utilization
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           averageUtilization: 70
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     - type: Resource
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       resource:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         name: memory
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         target:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           type: Utilization
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           averageUtilization: 80
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 dblessConfig:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   # Use a ConfigMap named kong-config with key kong.yml
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   configMap: kong-config
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:             EOT,
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + <<-EOT
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 proxy:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   enabled: true
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   type: LoadBalancer
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   http:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     enabled: true
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     servicePort: 80
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     containerPort: 8000
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   tls:
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     enabled: true
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     servicePort: 443
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     containerPort: 8443
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:             EOT,
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:         ]
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + verify                     = false
+01:00:16.045 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + version                    = "2.51.0"
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + wait                       = true
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + wait_for_jobs              = false
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:     }
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   # kubernetes_config_map.kong_config will be created
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + resource "kubernetes_config_map" "kong_config" {
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + data = {
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + "kong.yml" = <<-EOT
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 _format_version: "3.0"
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 _transform: true
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 services:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   - name: api
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     url: http://api:3000
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     routes:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       - name: public-routes
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         paths:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - /healthz
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - /ready
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - /metrics
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         strip_path: false
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         protocols: [http]
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       - name: protected-routes
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         paths:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - /hash
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         strip_path: false
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         protocols: [http]
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                         plugins:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - name: key-auth
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                             config:
+01:00:16.046 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                               key_names:
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                                 - x-api-key
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                               key_in_body: false
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                               hide_credentials: false
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                           - name: rate-limiting
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                             config:
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                               minute: 60
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                               policy: local
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                 consumers:
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                   - username: local-consumer
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                     keyauth_credentials:
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:                       - key: mock-api-key
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:             EOT
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:         }
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + id   = (known after apply)
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + metadata {
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + generation       = (known after apply)
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + labels           = {
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:               + "app.kubernetes.io/instance" = "kong"
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:               + "app.kubernetes.io/name"     = "kong-config"
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:             }
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + name             = "kong-config"
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + namespace        = "kong"
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + resource_version = (known after apply)
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + uid              = (known after apply)
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:         }
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:     }
+01:00:16.047 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   # kubernetes_namespace.this will be created
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + resource "kubernetes_namespace" "this" {
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + id                               = (known after apply)
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + wait_for_default_service_account = false
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:       + metadata {
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + generation       = (known after apply)
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + name             = "kong"
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + resource_version = (known after apply)
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:           + uid              = (known after apply)
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:         }
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:     }
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: Plan: 3 to add, 0 to change, 0 to destroy.
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: Changes to Outputs:
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + namespace    = "kong"
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform:   + release_name = "kong"
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: ─────────────────────────────────────────────────────────────────────────────
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: Note: You didn't use the -out option to save this plan, so Terraform can't
+01:00:16.048 STDOUT [local/aws/eu-west-3/internal/services/kong] terraform: guarantee to take exactly these actions if you run "terraform apply" now.
