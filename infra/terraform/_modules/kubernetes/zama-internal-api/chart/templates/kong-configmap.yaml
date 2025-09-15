@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kong-config
+  labels:
+    app.kubernetes.io/name: kong-config
+    app.kubernetes.io/part-of: {{ include "zama-internal-api.fullname" . }}
+data:
+  kong.yml: |
+{{ (.Files.Get "infra/kong/kong.yml") | indent 4 }}
+
+

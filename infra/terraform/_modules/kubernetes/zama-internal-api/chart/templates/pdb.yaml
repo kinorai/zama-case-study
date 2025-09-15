@@ -1,0 +1,15 @@
+{{- if .Values.pdb.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "zama-internal-api.fullname" . }}
+  labels:
+    {{- include "zama-internal-api.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "zama-internal-api.selectorLabels" . | nindent 6 }}
+  minAvailable: {{ .Values.pdb.minAvailable }}
+{{- end }}
+
+
