@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-test-terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install deps
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build
+        run: npm run build
+
+      - name: Docker build api
+        run: docker build -t local/api:ci .
+
+      - name: Install OS packages (jq, graphviz, awscli, netcat)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq graphviz awscli netcat-openbsd
+
+      - name: Compose integration test (API + Kong)
+        run: |
+          docker compose -f docker-compose.yml up -d
+          sleep 5
+          curl -sSf http://localhost:8000/healthz | jq .
+          curl -sSf -H 'x-api-key: local-key' -H 'content-type: application/json' \
+            -d '{"value":"hello"}' http://localhost:8000/hash | jq .
+          docker compose -f docker-compose.yml down -v
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.8.5
+
+      - name: Install Terragrunt
+        run: |
+          TG_VERSION=v0.67.16
+          curl -sSL -o terragrunt https://github.com/gruntwork-io/terragrunt/releases/download/${TG_VERSION}/terragrunt_linux_amd64
+          echo "0c2b20b1f8e66a19d574fb0edb5595ca66e3833d3aa5c2e10c434a97c8acf6b4  terragrunt" | sha256sum -c - || true
+          chmod +x terragrunt
+          sudo mv terragrunt /usr/local/bin/terragrunt
+
+      - name: Terragrunt plan/graph (LocalStack)
+        working-directory: infra/terraform/local/aws/eu-west-3/internal/services/zama-internal-api
+        env:
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+          AWS_DEFAULT_REGION: eu-west-3
+        run: |
+          docker rm -f localstack >/dev/null 2>&1 || true
+          docker run -d --name localstack -p 4566:4566 -e SERVICES="s3,sts,eks" localstack/localstack:3.7
+          for i in {1..30}; do nc -z localhost 4566 && break || sleep 1; done
+
+          # Create S3 bucket for remote state
+          aws --endpoint-url http://localhost:4566 --region eu-west-3 s3 mb s3://zama-terragrunt-state || true
+
+          # Env hint for some Terragrunt operations against LocalStack
+          export AWS_ENDPOINT_URL=http://localhost:4566
+
+          # Provide a dummy kubeconfig so Helm/K8s providers can parse during plan
+          mkdir -p ~/.kube
+          cat > ~/.kube/kubeconfig-zama-local-k3d.yaml <<'KCFG'
+          apiVersion: v1
+          clusters:
+          - cluster:
+              server: https://127.0.0.1:65535
+            name: dummy
+          contexts:
+          - context:
+              cluster: dummy
+              user: dummy
+            name: dummy
+          current-context: dummy
+          kind: Config
+          preferences: {}
+          users:
+          - name: dummy
+            user:
+              token: dummy
+          KCFG
+
+          # Init and plan with Terragrunt
+          terragrunt init -input=false
+          terragrunt plan -out=tfplan.binary
+
+          # Save plan and graph at the repo-level paths expected by README.md
+          ROOT=$(git rev-parse --show-toplevel)
+          terraform show -no-color tfplan.binary > "$ROOT/infra/terraform/plan.txt"
+          terraform graph > "$ROOT/infra/terraform/graph.dot"
+          dot -Tpng "$ROOT/infra/terraform/graph.dot" -o "$ROOT/infra/terraform/graph.png" || true
+
+          docker rm -f localstack
+
+      - name: Upload artifacts (plan & graph)
+        uses: actions/upload-artifact@v4
+        with:
+          name: terraform-artifacts
+          path: |
+            infra/terraform/plan.txt
+            infra/terraform/graph.dot
+            infra/terraform/graph.png
+          if-no-files-found: warn
+
+
