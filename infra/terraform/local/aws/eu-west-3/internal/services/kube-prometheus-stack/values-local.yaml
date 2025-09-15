@@ -1,0 +1,51 @@
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: kong
+    hosts:
+      - grafana.internal.localhost
+
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      searchNamespace: ALL
+
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: kong
+    hosts:
+      - prometheus.internal.localhost
+
+  prometheusSpec:
+    additionalScrapeConfigs: |
+      - job_name: 'zama-internal-api'
+        kubernetes_sd_configs:
+          - role: endpoints
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_service_label_app_kubernetes_io_name]
+            action: keep
+            regex: zama-internal-api
+          - source_labels: [__meta_kubernetes_endpoint_port_name]
+            action: keep
+            regex: http
+        metrics_path: /metrics
+
+    ruleSelectorNilUsesHelmValues: false
+
+additionalPrometheusRulesMap:
+  api-alerts:
+    groups:
+      - name: api-alerts
+        rules:
+          - alert: HighErrorRate
+            expr: sum(rate(http_requests_total{status=~"5.."}[5m])) > 1
+            for: 2m
+            labels:
+              severity: warning
+            annotations:
+              summary: High 5xx rate detected
+              description: More than 1 req/s of 5xx over 5m
+
+
