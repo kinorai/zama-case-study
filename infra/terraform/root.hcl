@@ -1,7 +1,7 @@
-# Local Terragrunt root overriding remote state for LocalStack
+# Root Terragrunt config for remote state, provider and versions
 
 locals {
-  aws_region = "eu-west-3"
+  aws_region = "eu-west-3" # Paris
 }
 
 terraform {
@@ -13,6 +13,7 @@ terraform {
   }
 }
 
+# Generate common provider and versions into each working directory
 generate "versions" {
   path      = "versions.tf"
   if_exists = "overwrite"
@@ -23,6 +24,14 @@ terraform {
     aws = {
       source  = "hashicorp/aws"
       version = "~> 5.46"
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = ">= 2.4.0"
+    }
+    random = {
+      source  = "hashicorp/random"
+      version = "~> 3.6"
     }
   }
 }
@@ -47,12 +56,12 @@ EOF
 remote_state {
   backend = "s3"
   config = {
-    bucket           = "zama-terragrunt-state"
-    key              = "${path_relative_to_include()}/terraform.tfstate"
-    region           = local.aws_region
-    encrypt          = true
-    use_lockfile     = true
-    endpoint         = "http://localhost:4566"
+    # NOTE: Ensure these are bootstrapped (or change to local backend) before first use
+    bucket         = "zama-terragrunt-state"
+    key            = "${path_relative_to_include()}/terraform.tfstate"
+    region         = local.aws_region
+    encrypt        = true
+    use_lockfile   = true
     force_path_style = true
   }
 }
@@ -70,3 +79,4 @@ EOF
 inputs = {
   aws_region = local.aws_region
 }
+

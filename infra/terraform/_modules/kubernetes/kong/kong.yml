@@ -32,6 +32,6 @@ services:
 consumers:
   - username: local-consumer
     keyauth_credentials:
-      - key: local-key
+      - key: ${key_auth_key}
 
 

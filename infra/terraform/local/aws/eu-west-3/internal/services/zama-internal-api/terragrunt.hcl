@@ -27,11 +27,11 @@ dependency "priority_classes" {
 
 inputs = {
   kubeconfig_path = "~/.kube/kubeconfig-zama-local-k3d.yaml"
+  values_override_file = "${get_terragrunt_dir()}/values-local.yaml"
   # values_files = [
   #   "${get_repo_root()}/infra/terraform/_modules/kubernetes/zama-internal-api/chart/values.yaml",
   #   "${get_terragrunt_dir()}/values-local.yaml"
   # ]
-  # API key is generated in the module; no need to set here
 }
 
 

@@ -1,0 +1,3 @@
+image:
+  repository: k3d-zama-local-k3d-registry:49810/zama-internal-api
+  tag: "local"

@@ -32,6 +32,12 @@ variable "kong_declarative_config_file" {
   default = "kong.yml"
 }
 
+variable "key_auth_key" {
+  description = "API key value to use for key-auth consumer"
+  type        = string
+  default     = ""
+}
+
 provider "kubernetes" {
   config_path = var.kubeconfig_path
 }
@@ -58,7 +64,9 @@ resource "kubernetes_config_map" "kong_config" {
     }
   }
   data = {
-    "kong.yml" = file("${path.module}/${var.kong_declarative_config_file}")
+    "kong.yml" = templatefile("${path.module}/${var.kong_declarative_config_file}", {
+      key_auth_key = var.key_auth_key != "" ? var.key_auth_key : "local-key"
+    })
   }
 }
 

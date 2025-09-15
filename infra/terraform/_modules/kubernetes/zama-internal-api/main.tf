@@ -17,6 +17,11 @@ variable "chart_dir" {
   default = "chart"
 }
 
+variable "values_override_file" {
+  type    = string
+  default = ""
+}
+
 variable "values_files" {
   type    = list(string)
   default = ["chart/values.yaml"]
@@ -55,6 +60,7 @@ resource "helm_release" "app" {
   chart     = "${path.module}/${var.chart_dir}"
   values    = concat(
     [for f in var.values_files : file("${path.module}/${f}")],
+    var.values_override_file != "" ? [file(var.values_override_file)] : [],
     [yamlencode({
       secret = {
         enabled    = true,
