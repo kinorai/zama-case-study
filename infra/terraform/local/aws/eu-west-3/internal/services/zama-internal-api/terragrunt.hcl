@@ -25,6 +25,11 @@ dependency "priority_classes" {
   skip_outputs = true
 }
 
+dependency "kube_prometheus_stack" {
+  config_path  = "../kube-prometheus-stack"
+  skip_outputs = true
+}
+
 inputs = {
   kubeconfig_path = "~/.kube/kubeconfig-zama-local-k3d.yaml"
   values_override_file = "${get_terragrunt_dir()}/values-local.yaml"
@@ -33,5 +38,4 @@ inputs = {
   #   "${get_terragrunt_dir()}/values-local.yaml"
   # ]
 }
-
 

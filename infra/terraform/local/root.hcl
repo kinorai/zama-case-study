@@ -34,7 +34,19 @@ generate "provider" {
   if_exists = "overwrite"
   contents  = <<EOF
 provider "aws" {
-  region = var.aws_region
+  region                      = var.aws_region
+  access_key                  = "test"
+  secret_key                  = "test"
+  s3_use_path_style           = true
+  skip_credentials_validation = true
+  skip_requesting_account_id  = true
+  skip_metadata_api_check     = true
+
+  endpoints {
+    eks = "http://localhost:4566"
+    s3  = "http://localhost:4566"
+    sts = "http://localhost:4566"
+  }
 }
 
 variable "aws_region" {
@@ -53,7 +65,7 @@ remote_state {
     encrypt          = true
     use_lockfile     = true
     endpoint         = "http://localhost:4566"
-    force_path_style = true
+    use_path_style = true
   }
 }
 

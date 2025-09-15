@@ -3,7 +3,7 @@ terraform {
 }
 
 include "root" {
-  path = find_in_parent_folders("local/root.hcl")
+  path = find_in_parent_folders("root.hcl")
 }
 
 inputs = {

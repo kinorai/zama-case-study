@@ -21,8 +21,8 @@ terraform {
   }
 }
 
-dependency "kong" {
-  config_path  = "../kong"
+dependency "priority_classes" {
+  config_path  = "../priority-classes"
   skip_outputs = true
 }
 
