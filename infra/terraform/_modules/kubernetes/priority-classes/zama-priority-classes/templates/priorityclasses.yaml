@@ -1,0 +1,25 @@
+{{- /*
+Render PriorityClass resources from values.priorityClasses
+*/ -}}
+{{- $labels := dict }}
+{{- if .Values.labels }}
+{{- $labels = .Values.labels }}
+{{- end }}
+{{- range $name, $cfg := .Values.priorityClasses }}
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: {{ $name | quote }}
+  labels:
+    {{- range $k, $v := $labels }}
+    {{ $k }}: {{ $v | quote }}
+    {{- end }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service | quote }}
+    app.kubernetes.io/instance: {{ $.Release.Name | quote }}
+value: {{ $cfg.value | int }}
+globalDefault: {{ ternary true false ($cfg.globalDefault) }}
+description: {{ default (printf "Priority class %s" $name) $cfg.description | quote }}
+---
+{{- end }}
+
+

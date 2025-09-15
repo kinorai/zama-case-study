@@ -1,0 +1,37 @@
+_format_version: "3.0"
+_transform: true
+
+services:
+  - name: api
+    url: http://api:3000
+    routes:
+      - name: public-routes
+        paths:
+          - /healthz
+          - /ready
+          - /metrics
+        strip_path: false
+        protocols: [http]
+      - name: protected-routes
+        paths:
+          - /hash
+        strip_path: false
+        protocols: [http]
+        plugins:
+          - name: key-auth
+            config:
+              key_names:
+                - x-api-key
+              key_in_body: false
+              hide_credentials: false
+          - name: rate-limiting
+            config:
+              minute: 60
+              policy: local
+
+consumers:
+  - username: local-consumer
+    keyauth_credentials:
+      - key: local-key
+
+

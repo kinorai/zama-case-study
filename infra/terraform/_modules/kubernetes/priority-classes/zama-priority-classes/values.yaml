@@ -1,0 +1,21 @@
+priorityClasses:
+  zama-critical:
+    value: 1000000
+    description: "Zama critical priority"
+    globalDefault: false
+  zama-high:
+    value: 100000
+    description: "Zama high priority"
+    globalDefault: false
+  zama-medium:
+    value: 10000
+    description: "Zama medium priority"
+    globalDefault: false
+  zama-low:
+    value: 1000
+    description: "Zama low priority"
+    globalDefault: false
+
+labels:
+  app.kubernetes.io/part-of: "zama"
+  app.kubernetes.io/component: "scheduling"

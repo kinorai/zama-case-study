@@ -1,0 +1,44 @@
+priorityClassName: "zama-critical"
+
+ingressController:
+  enabled: true
+  resources:
+    limits:
+      cpu: 1
+      memory: 2Gi
+    requests:
+      cpu: 100m
+      memory: 256Mi
+# Resource requests/limits for Kong
+resources:
+  limits:
+    cpu: 1
+    memory: 2Gi
+  requests:
+    cpu: 100m
+    memory: 256Mi
+# Enable PDB for Kong
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 50%
+# Enable HPA for Kong
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+dblessConfig:
+  # Use a ConfigMap named kong-config with key kong.yml
+  configMap: kong-config

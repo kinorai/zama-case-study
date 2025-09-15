@@ -1,0 +1,21 @@
+{{- if .Values.priorityClasses }}
+1. Priority Classes have been successfully created:
+{{- range $name, $config := .Values.priorityClasses }}
+   - {{ $name }}: value={{ $config.value }}{{ if $config.description }}, description="{{ $config.description }}"{{ end }}{{ if $config.globalDefault }}, globalDefault=true{{ end }}
+{{- end }}
+
+2. To use these priority classes in your workloads, add the following to your Pod spec:
+   spec:
+     priorityClassName: <priority-class-name>
+
+3. Available priority classes (in order of priority):
+{{- $sortedClasses := list }}
+{{- range $name, $config := .Values.priorityClasses }}
+{{- $sortedClasses = append $sortedClasses (dict "name" $name "value" $config.value) }}
+{{- end }}
+{{- range $class := $sortedClasses }}
+   - {{ $class.name }} ({{ $class.value }})
+{{- end }}
+{{- else }}
+No priority classes configured.
+{{- end }}
